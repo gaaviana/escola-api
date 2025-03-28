@@ -1,5 +1,6 @@
 import express from "express";
 
+
 const app = express();
 const porta = 3000;
 
@@ -17,22 +18,22 @@ app.get('/alunos', (req, res) => {
 })
 
 // Exibindo dados de um aluno
-app.get('/alunos/1', (req, res) => {
+app.get('/alunos/:id', (req, res) => {
     res.send('Exibindo dados de um aluno')
 })
 
 // cadastrando um aluno
 app.post('/alunos', (req, res) => {
-    res.send('Exibindo dados de UM aluno')
+    res.send('Cadastrando dados de UM aluno')
 })
 
 // atualizando aluno
-app.patch('/alunos/1', (res, req) =>{
+app.patch('/alunos/:id', (req, res) =>{
     res.send('atualizando dados do aluno')
 })
 
 // deletando dados 
-app.delete('/alunos/1', (req, res) => {
+app.delete('/alunos/:id', (req, res) => {
     res.send('deletando aluno')
 })
 
