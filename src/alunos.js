@@ -33,4 +33,36 @@ function inserir(aluno, res) {
     });
 }
 
-export {ler, inserir};
+// função ler um aluno
+function lerUm(id, res) {
+  const sql = "SELECT * FROM alunos WHERE id = ?"
+
+  conexao.query(sql, id, (erro, resultado) => {
+    if (resultado === 0) {
+      res.status(204).end();
+      return;
+    }
+
+    if (erro) {
+      res.status(400).json({ error: erro.code });
+    } else {
+      res.status(200).json(resultado[0]);
+    }
+  })
+  
+}
+
+// função que exclui em aluno
+function excluir(id, res) {
+  const sql = "DELETE FROM alunos WHERE id = ?";
+
+  conexao.query(sql, id, (erro, resultado) => {
+    if (erro) {
+      res.status(400).json({ error: erro.code });
+    } else {
+      res.status(200).json(resultado[0]);
+    }
+  });
+}
+
+export {ler, inserir, lerUm, excluir};

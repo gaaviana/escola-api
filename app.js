@@ -1,5 +1,5 @@
 import express, { urlencoded } from "express";
-import { ler, inserir } from "./src/alunos.js";
+import { ler, inserir, lerUm, excluir } from "./src/alunos.js";
 
 const app = express();
 const porta = 3000;
@@ -26,7 +26,11 @@ app.get('/alunos', (req, res) => {
 
 // Exibindo dados de um aluno
 app.get('/alunos/:id', (req, res) => {
-    res.send('Exibindo dados de um aluno')
+   // capturando o ID que vem di endpoint
+    const id = parseInt(req.params.id);
+
+    lerUm(id, res);
+
 })
 
 // cadastrando um aluno
@@ -45,6 +49,9 @@ app.patch('/alunos/:id', (req, res) =>{
 
 // deletando dados 
 app.delete('/alunos/:id', (req, res) => {
-    res.send('deletando aluno')
+    
+    const id = parseInt(req.params.id);
+
+    excluir(id, res)
 })
 
