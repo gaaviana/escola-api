@@ -28,9 +28,9 @@ function inserir(aluno, res) {
       if (erro) {
           res.status(400).json(erro.code);
       } else {
-        res.status(201).json({"status" : "aluno, inserido!"})
+        res.status(201).json({"status" : "aluno, inserido!"});
       }
-    })
+    });
 }
 
 export {ler, inserir};

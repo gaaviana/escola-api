@@ -1,8 +1,15 @@
-import express from "express";
-import { ler } from "./src/alunos.js";
+import express, { urlencoded } from "express";
+import { ler, inserir } from "./src/alunos.js";
 
 const app = express();
 const porta = 3000;
+
+// habilitando para dar suporte ao formato json
+app.use(express.json());
+
+// habilitando para dar suporte para dados a partir de inputs de formularios
+app.use(express.urlencoded({extended:true}));
+
 
 app.listen(porta, () => {
     console.log(`... ${porta}`);
@@ -24,7 +31,11 @@ app.get('/alunos/:id', (req, res) => {
 
 // cadastrando um aluno
 app.post('/alunos', (req, res) => {
-    res.send('Cadastrando dados de UM aluno')
+    // capturando os dados a partir do corpo da requisição
+    const novoAluno = req.body;
+
+    // executando a função inserir e passando os parametros novoAluno e res
+    inserir(novoAluno, res);
 })
 
 // atualizando aluno
