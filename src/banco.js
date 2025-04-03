@@ -9,7 +9,7 @@ import mysql from 'mysql2'; // imortando o modulo
 // });
 
  const conexao = mysql.createConnection ({
-   host: 'db4free',
+   host: 'db4free.net',
    user: 'paulino_gavi',
    password: 'santos1912',
   database: 'gavi_banco' 
