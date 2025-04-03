@@ -1,5 +1,5 @@
 import express, { urlencoded } from "express";
-import { ler, inserir, lerUm, excluir } from "./src/alunos.js";
+import { ler, inserir, lerUm, excluir, atualizar } from "./src/alunos.js";
 
 const app = express();
 const porta = 3000;
@@ -43,8 +43,16 @@ app.post('/alunos', (req, res) => {
 })
 
 // atualizando aluno
-app.patch('/alunos/:id', (req, res) =>{
-    res.send('atualizando dados do aluno')
+app.patch('/alunos/:id', (req, res) => {
+    // res.send(`Atualizando dados do aluno`);
+ 
+    // capturar id
+    const id = parseInt(req.params.id);
+ 
+    // pegando as informações do body
+    const aluno = req.body;
+   
+    atualizar(id, aluno, res);
 })
 
 // deletando dados 
