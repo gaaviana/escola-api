@@ -21,7 +21,7 @@ app.listen(porta, () => {
 
 app.get('/', (req, res) => {
    // res.send('API utilizando Node.js, Express e MySQL');
-   res.redirect('https://documenter.getpostman.com/view/43562465/2sB2cSi4Me');
+   res.redirect(`https://documenter.getpostman.com/view/43562465/2sB2cSi4Me`);
 })
 
 // Exibir todos os alunos
