@@ -1,5 +1,5 @@
-import mysql from 'mysql2'; // imortando o modulo
-
+// imortando o mysql2
+import mysql from 'mysql2'; 
 // dados da conexão
 // const conexao = mysql.createConnection ({
 //   host: 'localhost',
@@ -8,6 +8,7 @@ import mysql from 'mysql2'; // imortando o modulo
 //  database: 'escola_api' 
 // });
 
+// conexao xom o banco de dados na sintaxe do mysql2
  const conexao = mysql.createConnection ({
    host: 'db4free.net',
    user: 'paulino_gavi',
@@ -16,6 +17,8 @@ import mysql from 'mysql2'; // imortando o modulo
  });
 
 // conectando e passando mensagem de erro
+// se acontecer algum erro a mensagem sera armazenada em uma const "erro" e sera exibida para o usuario, caso o contrario sera exibida da mesagem que o banco esta conectado.
+// erro e conexao são objetos por isso o uso do ponto.
 conexao.connect( erro => {
     if (erro){
         console.log(`Erro ao conectar: ${erro.message}`);
@@ -25,5 +28,6 @@ conexao.connect( erro => {
     }
 });
 
-// exportanto
+// exportanto para o arquivo aluno
+// importante para rodar todos juntos
 export default conexao
